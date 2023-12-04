@@ -48,14 +48,7 @@ import { siteConfig } from '@/lib/config'
  * @constructor
  */
 const LayoutBase = props => {
-  const {
-    children,
-    headerSlot,
-    slotTop,
-    slotRight,
-    className,
-    meta
-  } = props
+  const { children, headerSlot, slotTop, slotRight, className, meta } = props
 
   return (
     <div
@@ -114,7 +107,8 @@ const LayoutIndex = props => {
       </div>
       {/* 通知横幅 */}
       <NoticeBar />
-      <Hero {...props} />
+      {/* // 暫時不用，以後考慮 
+      <Hero {...props} /> */}
       <div className="max-w-[86rem] mx-auto px-3">
         <WWAds className="w-full" orientation="horizontal" />
       </div>
@@ -129,13 +123,11 @@ const LayoutIndex = props => {
       <div id="post-outer-wrapper" className="px-5 md:px-0">
         {/* 文章分类条 */}
         <CategoryBar {...props} />
-        {siteConfig('POST_LIST_STYLE') === 'page'
-          ? (
+        {siteConfig('POST_LIST_STYLE') === 'page' ? (
           <BlogPostListPage {...props} />
-            )
-          : (
+        ) : (
           <BlogPostListScroll {...props} />
-            )}
+        )}
       </div>
     </LayoutBase>
   )
@@ -163,13 +155,11 @@ const LayoutPostList = props => {
       <div id="post-outer-wrapper" className="px-5  md:px-0">
         {/* 文章分类条 */}
         <CategoryBar {...props} />
-        {siteConfig('POST_LIST_STYLE') === 'page'
-          ? (
+        {siteConfig('POST_LIST_STYLE') === 'page' ? (
           <BlogPostListPage {...props} />
-            )
-          : (
+        ) : (
           <BlogPostListScroll {...props} />
-            )}
+        )}
       </div>
     </LayoutBase>
   )
@@ -216,21 +206,17 @@ const LayoutSearch = props => {
       headerSlot={headerSlot}
     >
       <div id="post-outer-wrapper" className="px-5  md:px-0">
-        {!currentSearch
-          ? (
+        {!currentSearch ? (
           <SearchNav {...props} />
-            )
-          : (
+        ) : (
           <div id="posts-wrapper">
-            {siteConfig('POST_LIST_STYLE') === 'page'
-              ? (
+            {siteConfig('POST_LIST_STYLE') === 'page' ? (
               <BlogPostListPage {...props} />
-                )
-              : (
+            ) : (
               <BlogPostListScroll {...props} />
-                )}
-          </div>
             )}
+          </div>
+        )}
       </div>
     </LayoutBase>
   )
@@ -310,9 +296,15 @@ const LayoutSlug = props => {
       <PostHeader {...props} />
     </header>
   )
-  const commentEnable = siteConfig('COMMENT_TWIKOO_ENV_ID') || siteConfig('COMMENT_WALINE_SERVER_URL') || siteConfig('COMMENT_VALINE_APP_ID') ||
-        siteConfig('COMMENT_GISCUS_REPO') || siteConfig('COMMENT_CUSDIS_APP_ID') || siteConfig('COMMENT_UTTERRANCES_REPO') ||
-        siteConfig('COMMENT_GITALK_CLIENT_ID') || siteConfig('COMMENT_WEBMENTION_ENABLE')
+  const commentEnable =
+    siteConfig('COMMENT_TWIKOO_ENV_ID') ||
+    siteConfig('COMMENT_WALINE_SERVER_URL') ||
+    siteConfig('COMMENT_VALINE_APP_ID') ||
+    siteConfig('COMMENT_GISCUS_REPO') ||
+    siteConfig('COMMENT_CUSDIS_APP_ID') ||
+    siteConfig('COMMENT_UTTERRANCES_REPO') ||
+    siteConfig('COMMENT_GITALK_CLIENT_ID') ||
+    siteConfig('COMMENT_WEBMENTION_ENABLE')
 
   return (
     <LayoutBase
@@ -322,7 +314,11 @@ const LayoutSlug = props => {
       showTag={false}
       slotRight={slotRight}
     >
-      <div className={`w-full xl:max-w-5xl ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}>
+      <div
+        className={`w-full xl:max-w-5xl ${
+          hasCode ? 'xl:w-[73.15vw]' : ''
+        } lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}
+      >
         {lock && <ArticleLock validPassword={validPassword} />}
 
         {!lock && (
@@ -438,10 +434,10 @@ const Layout404 = props => {
                 <h1 className="error-title font-extrabold md:text-9xl text-7xl dark:text-white">
                   404
                 </h1>
-                <div className='dark:text-white'>请尝试站内搜索寻找文章</div>
+                <div className="dark:text-white">请尝试站内搜索寻找文章</div>
                 <Link href="/">
                   <button className="bg-blue-500 py-2 px-4 text-white shadow rounded-lg hover:bg-blue-600 hover:shadow-md duration-200 transition-all">
-                    回到主页
+                    回到首頁
                   </button>
                 </Link>
               </div>
