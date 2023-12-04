@@ -28,8 +28,8 @@ const CONFIG = {
   //   HERO_RECOMMEND_COVER: 'https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712_1280.jpg', // 英雄区右侧图片
 
   // 右侧个人资料卡牌欢迎语，点击可自动切换
-  HEO_INFOCARD_GREETINGS: ['你好！我是', '🔍 分享与热心帮助'],
-  HEO_INFO_CARD_URL: 'https://github.com/tangly1024/NotionNext', // 个人资料底部按钮链接
+  HEO_INFOCARD_GREETINGS: ['你好！我是', 'C#', 'DevOps'],
+  MH_INFO_CARD_URL: 'https://github.com/mhhung666', // 个人资料底部按钮链接
 
   // 用户技能图标
   HEO_GROUP_ICONS: [
