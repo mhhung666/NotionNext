@@ -70,8 +70,8 @@ const Footer = ({ title }) => {
       >
         <div id="footer-bottom-mid">
           NotionNext {siteConfig('VERSION')}{' '}
-          <i className="fa-light fa-copyright" /> {`${copyrightDate}`}{' '}
-          <i className="mx-1 fa-light fa-laptop-code" />{' '}
+          <i className="fa-regular fa-copyright" /> {`${copyrightDate}`}{' '}
+          <i className="mx-1 fa-regular fa-laptop-code" />{' '}
           <a
             href={siteConfig('LINK')}
             className="underline font-bold  dark:text-gray-300 "
