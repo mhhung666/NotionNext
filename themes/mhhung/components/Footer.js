@@ -30,7 +30,7 @@ const Footer = ({ title }) => {
       >
         <div id="footer-bottom-left">
           NotionNext {siteConfig('VERSION')} <i className="fas fa-copyright" />{' '}
-          {`${copyrightDate}`} <i className="mx-1 animate-pulse fas fa-heart" />{' '}
+          {`${copyrightDate}`} <i className="mx-1 fas fa-laptop-code" />{' '}
           <a
             href={siteConfig('LINK')}
             className="underline font-bold  dark:text-gray-300 "
