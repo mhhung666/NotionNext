@@ -29,8 +29,9 @@ const Footer = ({ title }) => {
         className="w-full h-20 flex flex-col p-3 lg:flex-row justify-between px-6 items-center bg-[#f1f3f7] dark:bg-[#30343f]"
       >
         <div id="footer-bottom">
-          NotionNext {siteConfig('VERSION')} <i className="fal fa-copyright" />{' '}
-          {`${copyrightDate}`} <i className="mx-1 fal fa-laptop-code" />{' '}
+          NotionNext {siteConfig('VERSION')}{' '}
+          <i className="fa-light fa-copyright" /> {`${copyrightDate}`}{' '}
+          <i className="mx-1 fa-solid fa-laptop-code" />{' '}
           <a
             href={siteConfig('LINK')}
             className="underline font-bold  dark:text-gray-300 "
