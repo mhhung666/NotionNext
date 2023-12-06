@@ -24,24 +24,11 @@ const Footer = ({ title }) => {
       <br />
 
       {/* 底部页面信息 */}
-      <div
+      {/* <div
         id="footer-bottom"
         className="w-full h-20 flex flex-col p-3 lg:flex-row justify-between px-6 items-center bg-[#f1f3f7] dark:bg-[#30343f]"
       >
-        <div id="footer-bottom">
-          NotionNext {siteConfig('VERSION')}{' '}
-          <i className="fa-light fa-copyright" /> {`${copyrightDate}`}{' '}
-          <i className="mx-1 fa-solid fa-laptop-code" />{' '}
-          <a
-            href={siteConfig('LINK')}
-            className="underline font-bold  dark:text-gray-300 "
-          >
-            {siteConfig('AUTHOR')}
-          </a>
-          .
-        </div>
-
-        {/* <div id="footer-bottom-left">
+        <div id="footer-bottom-left">
           NotionNext {siteConfig('VERSION')} <i className="far fa-copyright" />{' '}
           {`${copyrightDate}`} <i className="mx-1 fal fa-laptop-code" />{' '}
           <a
@@ -51,9 +38,9 @@ const Footer = ({ title }) => {
             {siteConfig('AUTHOR')}
           </a>
           .
-        </div> */}
+        </div>
 
-        {/* <div id="footer-bottom-right">
+        <div id="footer-bottom-right">
           {siteConfig('BEI_AN') && (
             <>
               <i className="fas fa-shield-alt" />{' '}
@@ -72,8 +59,25 @@ const Footer = ({ title }) => {
             <span className="px-1 busuanzi_value_site_uv"> </span>{' '}
           </span>
 
-          <h1 className='text-xs pt-4 text-light-400 dark:text-gray-400'>{title} {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}</h1>
-        </div> */}
+          <h1 className="text-xs pt-4 text-light-400 dark:text-gray-400">
+            {title} {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}
+          </h1>
+        </div>
+      </div> */}
+      <div
+        id="footer"
+        className="w-full h-20 flex flex-col p-3 lg:flex-row justify-center px-6 items-center bg-[#f1f3f7] dark:bg-[#30343f]"
+      >
+        <div id="footer-bottom-mid">
+          NotionNext {siteConfig('VERSION')} <i className="fas fa-copyright" />{' '}
+          {`${copyrightDate}`} <i className="mx-1 fas fa-laptop-code" />{' '}
+          <a
+            href={siteConfig('LINK')}
+            className="underline font-bold  dark:text-gray-300 "
+          >
+            {siteConfig('AUTHOR')}
+          </a>
+        </div>
       </div>
     </footer>
   )
