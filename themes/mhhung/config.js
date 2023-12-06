@@ -5,7 +5,7 @@ const CONFIG = {
 
   // 首页顶部通知条滚动内容，如不需要可以留空 []
   MH_NOTICE_BAR: [
-    { title: '哈哈是我啦', url: 'https://mhhung.com' }
+    // { title: '哈哈是我啦', url: 'https://mhhung.com' }
     // { title: '访问文档中心获取更多帮助', url: 'https://docs.tangly1024.com' }
   ],
 
