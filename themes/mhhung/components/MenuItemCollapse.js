@@ -3,7 +3,7 @@ import SmartLink from '@/components/SmartLink'
 import { useState } from 'react'
 
 /**
- * 折叠菜单
+ * 摺疊選單
  * @param {*} param0
  * @returns
  */
@@ -64,7 +64,7 @@ export const MenuItemCollapse = props => {
         )}
       </div>
 
-      {/* 折叠子菜单 */}
+      {/* 摺疊子選單 */}
       {hasSubMenu && (
         <Collapse isOpen={isOpen} onHeightChange={props.onHeightChange}>
           {link.subMenus.map((sLink, index) => {

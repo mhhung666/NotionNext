@@ -2,10 +2,10 @@ import { useGlobal } from '@/lib/global'
 import { useEffect, useState } from 'react'
 
 /**
- * 跳转到网页顶部
- * 当屏幕下滑500像素后会出现该控件
- * @param targetRef 关联高度的目标html标签
- * @param showPercent 是否显示百分比
+ * 跳轉到網頁頂部
+ * 當螢幕下滑 500 像素後會出現該控制項
+ * @param targetRef 關聯高度的目標 HTML 標籤
+ * @param showPercent 是否顯示百分比
  * @returns {JSX.Element}
  * @constructor
  */

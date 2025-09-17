@@ -16,11 +16,11 @@ export const BlogItem = props => {
     siteConfig('POST_LIST_PREVIEW', false, NOTION_CONFIG) && post.blockMap
   return (
     <div key={post.id} className='h-42 mt-6 mb-10'>
-      {/* 文章标题 */}
+      {/* 文章標題 */}
 
       <div className='flex'>
         <div className='article-cover h-full'>
-          {/* 图片封面 */}
+          {/* 圖片封面 */}
           {showPageCover && (
             <div className='overflow-hidden mr-2 w-56 h-full'>
               <SmartLink href={post.href} passHref legacyBehavior>
@@ -45,11 +45,11 @@ export const BlogItem = props => {
             </SmartLink>
           </h2>
 
-          {/* 文章信息 */}
+          {/* 文章資訊 */}
           <header className='text-md text-[var(--primary-color)] dark:text-gray-300 flex-wrap flex items-center leading-6'>
             <div className='space-x-2'>
               <span className='text-sm'>
-                发布于
+                發布於
                 <SmartLink
                   className='p-1 hover:text-red-400 transition-all duration-200'
                   href={`/archive#${formatDateFmt(post?.publishDate, 'yyyy-MM')}`}>

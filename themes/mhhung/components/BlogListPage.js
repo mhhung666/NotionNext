@@ -7,7 +7,7 @@ import CONFIG from '../config'
 import { BlogItem } from './BlogItem'
 
 /**
- * 博客列表
+ * 部落格列表
  * @param {*} props
  * @returns
  */
@@ -19,7 +19,7 @@ export default function BlogListPage(props) {
   const totalPage = Math.ceil(postCount / POSTS_PER_PAGE)
   const currentPage = +page
 
-  // 博客列表嵌入广告
+  // 部落格列表嵌入廣告
   const TYPOGRAPHY_POST_AD_ENABLE = siteConfig(
     'TYPOGRAPHY_POST_AD_ENABLE',
     false,

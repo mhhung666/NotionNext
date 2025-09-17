@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { BlogItem } from './BlogItem'
 
 /**
- * 滚动博客列表
+ * 滾動部落格列表
  * @param {*} props
  * @returns
  */
@@ -30,7 +30,7 @@ export default function BlogListScroll(props) {
 
   const targetRef = useRef(null)
 
-  // 监听滚动自动分页加载
+  // 監聽滾動自動分頁載入
   const scrollTrigger = useCallback(
     throttle(() => {
       const scrollS = window.scrollY + window.outerHeight

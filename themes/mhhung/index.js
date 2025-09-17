@@ -18,7 +18,7 @@ const AlgoliaSearchModal = dynamic(
   { ssr: false }
 )
 
-// 主题组件
+// 主題元件
 
 const BlogArchiveItem = dynamic(() => import('./components/BlogArchiveItem'), {
   ssr: false
@@ -47,12 +47,12 @@ const RecommendPosts = dynamic(() => import('./components/RecommendPosts'), {
   ssr: false
 })
 
-// 主题全局状态
+// 主題全域狀態
 const ThemeGlobalSimple = createContext()
 export const useSimpleGlobal = () => useContext(ThemeGlobalSimple)
 
 /**
- * 基础布局
+ * 基礎版面
  *
  * @param {*} props
  * @returns
@@ -73,24 +73,24 @@ const LayoutBase = props => {
         {siteConfig('SIMPLE_TOP_BAR', null, CONFIG) && <TopBar {...props} />}
 
         <div className='flex flex-1 mx-auto overflow-hidden py-8 md:p-0 md:max-w-7xl md:px-24 w-screen'>
-          {/* 主体 - 使用 flex 布局 */}
-          {/* 文章详情才显示 */}
+          {/* 主體 - 使用 flex 版面 */}
+          {/* 僅文章詳情顯示 */}
           {/* {props.post && (
             <div className='mt-20 hidden md:block md:fixed md:left-5 md:w-[300px]'>
               <Catalog {...props} />
             </div>
           )} */}
           <div className='overflow-hidden md:mt-20 flex-1 '>
-            {/* 左侧内容区域 - 可滚动 */}
+            {/* 左側內容區域 - 可滾動 */}
             <div
               id='container-inner'
               className='h-full w-full md:px-24 overflow-y-auto scroll-hidden relative'>
-              {/* 移动端导航 - 显示在顶部 */}
+              {/* 行動版導覽 - 顯示在頂部 */}
               <div className='md:hidden'>
                 <NavBar {...props} />
               </div>
               {onLoading ? (
-                // loading 时显示 spinner
+                // 讀取時顯示 spinner
                 <div className='flex items-center justify-center min-h-[500px] w-full'>
                   <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 dark:border-white'></div>
                 </div>
@@ -98,14 +98,14 @@ const LayoutBase = props => {
                 <>{children}</>
               )}
               <AdSlot type='native' />
-              {/* 移动端页脚 - 显示在底部 */}
+              {/* 行動版頁尾 - 顯示在底部 */}
               <div className='md:hidden  z-30  '>
                 <Footer {...props} />
               </div>
             </div>
           </div>
 
-          {/* 右侧导航和页脚 - 固定不滚动 */}
+          {/* 右側導覽與頁尾 - 固定不滾動 */}
           <div className='hidden md:flex md:flex-col md:flex-shrink-0 md:h-[100vh] sticky top-20'>
             <NavBar {...props} />
             <Footer {...props} />
@@ -116,7 +116,7 @@ const LayoutBase = props => {
           <JumpToTopButton />
         </div>
 
-        {/* 搜索框 */}
+        {/* 搜尋框 */}
         <AlgoliaSearchModal cRef={searchModal} {...props} />
       </div>
     </ThemeGlobalSimple.Provider>
@@ -124,8 +124,8 @@ const LayoutBase = props => {
 }
 
 /**
- * 博客首页
- * 首页就是列表
+ * 部落格首頁
+ * 首頁就是列表
  * @param {*} props
  * @returns
  */
@@ -133,7 +133,7 @@ const LayoutIndex = props => {
   return <LayoutPostList {...props} />
 }
 /**
- * 博客列表
+ * 部落格列表
  * @param {*} props
  * @returns
  */
@@ -147,8 +147,8 @@ const LayoutPostList = props => {
 }
 
 /**
- * 搜索页
- * 也是博客列表
+ * 搜尋頁
+ * 也是部落格列表
  * @param {*} props
  * @returns
  */
@@ -186,7 +186,7 @@ const LayoutSearch = props => {
     grouped[year].sort((a, b) => b.publishDate - a.publishDate);
   }
 
-  // 转成数组并按年份倒序
+  // 轉成陣列並按年份倒序
   return Object.entries(grouped)
     .sort(([a], [b]) => b - a)
     .map(([year, posts]) => ({ year, posts }));
@@ -195,7 +195,7 @@ const LayoutSearch = props => {
 
 
 /**
- * 归档页
+ * 歸檔頁
  * @param {*} props
  * @returns
  */
@@ -218,7 +218,7 @@ const LayoutArchive = props => {
 }
 
 /**
- * 文章详情
+ * 文章詳情
  * @param {*} props
  * @returns
  */
@@ -233,22 +233,22 @@ const LayoutSlug = props => {
       {!lock && post && (
         <div
           className={`px-5 pt-3 ${fullWidth ? '' : 'xl:max-w-4xl 2xl:max-w-6xl'}`}>
-          {/* 文章信息 */}
+          {/* 文章資訊 */}
           <ArticleInfo post={post} />
 
-          {/* 广告嵌入 */}
+          {/* 廣告嵌入 */}
           {/* <AdSlot type={'in-article'} /> */}
           <WWAds orientation='horizontal' className='w-full' />
 
           <div id='article-wrapper'>
-            {/* Notion 文章主体 */}
+            {/* Notion 文章主體 */}
             {!lock && <NotionPage post={post} />}
           </div>
 
           {/* 分享 */}
           {/* <ShareBar post={post} /> */}
 
-          {/* 广告嵌入 */}
+          {/* 廣告嵌入 */}
           <AdSlot type={'in-article'} />
 
           {post?.type === 'Post' && (
@@ -258,7 +258,7 @@ const LayoutSlug = props => {
             </>
           )}
 
-          {/* 评论区 */}
+          {/* 留言區 */}
           <Comment frontMatter={post} />
         </div>
       )}
@@ -285,7 +285,7 @@ const Layout404 = props => {
           )
           if (!article) {
             router.push('/404').then(() => {
-              console.warn('找不到页面', router.asPath)
+              console.warn('找不到頁面', router.asPath)
             })
           }
         }
@@ -296,7 +296,7 @@ const Layout404 = props => {
 }
 
 /**
- * 分类列表
+ * 分類列表
  * @param {*} props
  * @returns
  */
@@ -328,7 +328,7 @@ const LayoutCategoryIndex = props => {
 }
 
 /**
- * 标签列表
+ * 標籤列表
  * @param {*} props
  * @returns
  */

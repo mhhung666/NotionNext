@@ -8,7 +8,7 @@ import { MenuItemCollapse } from './MenuItemCollapse'
 import { MenuItemDrop } from './MenuItemDrop'
 
 /**
- * 菜单导航
+ * 選單導覽
  * @param {*} props
  * @returns
  */
@@ -53,7 +53,7 @@ export const MenuList = ({ customNav, customMenu }) => {
     links = links.concat(customNav)
   }
 
-  // 如果 开启自定义菜单，则覆盖 Page 生成的菜单
+  // 若啟用自訂選單，就覆寫 Page 產生的選單
   if (siteConfig('CUSTOM_MENU')) {
     links = customMenu
   }
@@ -64,13 +64,13 @@ export const MenuList = ({ customNav, customMenu }) => {
 
   return (
     <>
-      {/* 大屏模式菜单 - 垂直排列 */}
+      {/* 大螢幕模式選單 - 垂直排列 */}
       <div id='nav-menu-pc' className='hidden md:flex md:flex-col md:gap-2'>
         {links?.map((link, index) => (
           <MenuItemDrop key={index} link={link} />
         ))}
       </div>
-      {/* 移动端小屏菜单 - 水平排列 */}
+      {/* 行動版小螢幕選單 - 水平排列 */}
       <div
         id='nav-menu-mobile'
         className='flex md:hidden my-auto justify-center space-x-4'>

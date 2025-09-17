@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/config'
 
 /**
- * 社交联系方式按钮组
+ * 社群聯絡方式按鈕組
  * @returns {JSX.Element}
  * @constructor
  */

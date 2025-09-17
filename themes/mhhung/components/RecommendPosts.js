@@ -4,8 +4,8 @@ import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 
 /**
- * 展示文章推荐
- */
+ * 顯示文章推薦
+*/
 const RecommendPosts = ({ recommendPosts }) => {
   const { locale } = useGlobal()
   if (!siteConfig('TYPOGRAPHY_ARTICLE_RECOMMEND_POSTS', null, CONFIG) || !recommendPosts || recommendPosts.length < 1) {
