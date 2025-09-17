@@ -49,7 +49,7 @@ export const MenuItemDrop = ({ link }) => {
               )}
             </div>
 
-            {/* 子選單 */}
+            {/* 子菜單 */}
             <ul
               className={`${show ? 'visible opacity-100' : 'invisible opacity-0'} absolute glassmorphism md:left-28 md:top-0 top-6 w-full border-gray-100 transition-all duration-300 z-20 block`}>
               {link?.subMenus?.map((sLink, index) => {

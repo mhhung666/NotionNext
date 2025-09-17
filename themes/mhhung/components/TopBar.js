@@ -2,7 +2,7 @@ import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 
 /**
- * 網站上方提示列
+ * 网站顶部 提示栏
  * @returns
  */
 export default function TopBar (props) {

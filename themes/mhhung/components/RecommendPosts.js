@@ -4,7 +4,7 @@ import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 
 /**
- * 顯示文章推薦
+ * 展示文章推荐
  */
 const RecommendPosts = ({ recommendPosts }) => {
   const { locale } = useGlobal()

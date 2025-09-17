@@ -1,7 +1,7 @@
 import { useGlobal } from '@/lib/global'
 
 /**
- * 文章列表上方區塊
+ * 文章列表上方嵌入
  * @param {*} props
  * @returns
  */

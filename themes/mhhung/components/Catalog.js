@@ -4,26 +4,26 @@ import { uuidToId } from 'notion-utils'
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * 目錄導覽元件
+ * 目录导航组件
  * @param toc
  * @returns {JSX.Element}
  * @constructor
  */
 const Catalog = ({ post }) => {
   const { locale } = useGlobal()
-  // 目錄自動滾動
+  // 目录自动滚动
   const tRef = useRef(null)
-  // 同步選中目錄事件
+  // 同步选中目录事件
   const [activeSection, setActiveSection] = useState(null)
 
-  // 監聽滾動事件
+  // 监听滚动事件
   useEffect(() => {
-    // 如果沒有文章或目錄，不執行任何操作
+    // 如果没有文章或目录，不执行任何操作
     if (!post || !post?.toc || post?.toc?.length < 1) {
       return
     }
     
-    const throttleMs = 100 // 降低節流時間提高響應速度
+    const throttleMs = 100 // 降低节流时间提高响应速度
     
     const actionSectionScrollSpy = throttle(() => {
       const sections = document.getElementsByClassName('notion-h')
@@ -32,34 +32,34 @@ const Catalog = ({ post }) => {
       let prevBBox = null
       let currentSectionId = null
       
-      // 先檢查當前視窗中的所有標題
+      // 先检查当前视口中的所有标题
       for (let i = 0; i < sections.length; ++i) {
         const section = sections[i]
         if (!section || !(section instanceof Element)) continue
         
         const bbox = section.getBoundingClientRect()
-        const offset = 100 // 固定位移量，避免計算不穩定
+        const offset = 100 // 固定偏移量，避免计算不稳定
         
-        // 如果標題在視窗上方或接近頂部，認為是當前標題
+        // 如果标题在视口上方或接近顶部，认为是当前标题
         if (bbox.top - offset < 0) {
           currentSectionId = section.getAttribute('data-id')
           prevBBox = bbox
         } else {
-          // 找到第一個在視窗下方的標題就停止
+          // 找到第一个在视口下方的标题就停止
           break
         }
       }
       
-      // 如果沒找到任何標題在視窗上方，使用第一個標題
+      // 如果没找到任何标题在视口上方，使用第一个标题
       if (!currentSectionId && sections.length > 0) {
         currentSectionId = sections[0].getAttribute('data-id')
       }
       
-      // 只有當 ID 變化時才更新狀態，減少不必要的渲染
+      // 只有当 ID 变化时才更新状态，减少不必要的渲染
       if (currentSectionId !== activeSection) {
         setActiveSection(currentSectionId)
         
-        // 查找目錄中對應的索引並滾動
+        // 查找目录中对应的索引并滚动
         const index = post?.toc?.findIndex(
           obj => uuidToId(obj.id) === currentSectionId
         )
@@ -73,20 +73,20 @@ const Catalog = ({ post }) => {
     const content = document.querySelector('#container-inner')
     if (!content) return // 防止 content 不存在
     
-    // 添加滾動和內容變化的監聽
+    // 添加滚动和内容变化的监听
     content.addEventListener('scroll', actionSectionScrollSpy)
     
-    // 初始執行一次
+    // 初始执行一次
     setTimeout(() => {
       actionSectionScrollSpy()
-    }, 300) // 延遲執行確保 DOM 已完全載入
+    }, 300) // 延迟执行确保 DOM 已完全加载
     
     return () => {
       content?.removeEventListener('scroll', actionSectionScrollSpy)
     }
   }, [post])
 
-  // 無目錄就直接返回空
+  // 无目录就直接返回空
   if (!post || !post?.toc || post?.toc?.length < 1) {
     return <></>
   }

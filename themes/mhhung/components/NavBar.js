@@ -7,7 +7,7 @@ import SocialButton from './SocialButton'
 import SmartLink from '@/components/SmartLink'
 
 /**
- * 選單導覽
+ * 菜单导航
  * @param {*} props
  * @returns
  */

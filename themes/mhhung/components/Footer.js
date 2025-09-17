@@ -3,7 +3,7 @@ import DarkModeButton from '@/components/DarkModeButton'
 import { siteConfig } from '@/lib/config'
 
 /**
- * 頁腳
+ * 页脚
  * @param {*} props
  * @returns
  */

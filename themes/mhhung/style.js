@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 /**
- * 此處樣式只對當前主題生效
- * 此處不支援 tailwindCSS 的 @apply 語法
+ * 此处样式只对当前主题生效
+ * 此处不支持 tailwindCSS 的 @apply 语法
  * @returns
  */
 const Style = () => {
@@ -29,7 +29,7 @@ const Style = () => {
       .dark body {
         background-color: rgb(35, 34, 34);
       }
-      // 文字不可選取
+      // 文本不可选取
       .forbid-copy {
         user-select: none;
         -webkit-user-select: none;

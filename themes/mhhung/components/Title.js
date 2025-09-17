@@ -1,7 +1,7 @@
 import { siteConfig } from '@/lib/config'
 
 /**
- * 標題區塊
+ * 标题栏
  * @param {*} props
  * @returns
  */
