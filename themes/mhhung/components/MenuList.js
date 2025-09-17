@@ -1,93 +1,83 @@
-import BLOG from '@/blog.config'
+import Collapse from '@/components/Collapse'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { MenuItem } from './MenuItem'
+import { useEffect, useRef, useState } from 'react'
+import CONFIG from '../config'
+import { MenuItemCollapse } from './MenuItemCollapse'
+import { MenuItemDrop } from './MenuItemDrop'
 
 /**
- * 响应式 折叠菜单
+ * 選單導覽
+ * @param {*} props
+ * @returns
  */
-export const MenuList = props => {
-  const { customNav, customMenu } = props
+export const MenuList = ({ customNav, customMenu }) => {
   const { locale } = useGlobal()
-
-  const [showMenu, setShowMenu] = useState(false) // 控制菜单展开/收起状态
+  const [isOpen, changeIsOpen] = useState(false)
+  const toggleIsOpen = () => {
+    changeIsOpen(!isOpen)
+  }
+  const closeMenu = e => {
+    changeIsOpen(false)
+  }
   const router = useRouter()
+  const collapseRef = useRef(null)
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', closeMenu)
+  })
 
   let links = [
     {
       icon: 'fas fa-archive',
       name: locale.NAV.ARCHIVE,
       href: '/archive',
-      show: siteConfig('HEO_MENU_ARCHIVE')
-    },
-    {
-      icon: 'fas fa-search',
-      name: locale.NAV.SEARCH,
-      href: '/search',
-      show: siteConfig('HEO_MENU_SEARCH')
+      show: siteConfig('TYPOGRAPHY_MENU_ARCHIVE', null, CONFIG)
     },
     {
       icon: 'fas fa-folder',
       name: locale.COMMON.CATEGORY,
       href: '/category',
-      show: siteConfig('HEO_MENU_CATEGORY')
+      show: siteConfig('TYPOGRAPHY_MENU_CATEGORY', null, CONFIG)
     },
     {
       icon: 'fas fa-tag',
       name: locale.COMMON.TAGS,
       href: '/tag',
-      show: siteConfig('HEO_MENU_TAG')
+      show: siteConfig('TYPOGRAPHY_MENU_TAG', null, CONFIG)
     }
   ]
 
   if (customNav) {
-    links = customNav.concat(links)
+    links = links.concat(customNav)
   }
 
-  // 如果 开启自定义菜单，则覆盖Page生成的菜单
-  if (siteConfig('CUSTOM_MENU', BLOG.CUSTOM_MENU)) {
+  // 如果 開啟自訂選單，則覆蓋 Page 生成的選單
+  if (siteConfig('CUSTOM_MENU')) {
     links = customMenu
   }
-
-  const toggleMenu = () => {
-    setShowMenu(!showMenu) // 切换菜单状态
-  }
-
-  useEffect(() => {
-    setShowMenu(false)
-  }, [router])
 
   if (!links || links.length === 0) {
     return null
   }
 
   return (
-    <div>
-      {/* 移动端菜单切换按钮 */}
-      <button
-        id='navbarToggler'
-        onClick={toggleMenu}
-        className={`absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden ${
-          showMenu ? 'navbarTogglerActive' : ''
-        }`}>
-        <span className='relative my-[6px] block h-[2px] w-[30px] bg-white duration-200 transition-all'></span>
-        <span className='relative my-[6px] block h-[2px] w-[30px] bg-white duration-200 transition-all'></span>
-        <span className='relative my-[6px] block h-[2px] w-[30px] bg-white duration-200 transition-all'></span>
-      </button>
-
-      <nav
-        id='navbarCollapse'
-        className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6 ${
-          showMenu ? '' : 'hidden'
-        }`}>
-        <ul className='blcok lg:flex 2xl:ml-20'>
-          {links?.map((link, index) => (
-            <MenuItem key={index} link={link} />
-          ))}
-        </ul>
-      </nav>
-    </div>
+    <>
+      {/* 大螢幕模式選單 - 垂直排列 */}
+      <div id='nav-menu-pc' className='hidden md:flex md:flex-col md:gap-2'>
+        {links?.map((link, index) => (
+          <MenuItemDrop key={index} link={link} />
+        ))}
+      </div>
+      {/* 行動端小螢幕選單 - 水平排列 */}
+      <div
+        id='nav-menu-mobile'
+        className='flex md:hidden my-auto justify-center space-x-4'>
+        {links?.map((link, index) => (
+          <MenuItemDrop key={index} link={link} />
+        ))}
+      </div>
+    </>
   )
 }
